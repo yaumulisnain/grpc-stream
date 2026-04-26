@@ -1,0 +1,22 @@
+{
+  "name": "grpc-stream-web-client",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "generate": "protoc --js_out=import_style=commonjs:./src/generated --grpc-web_out=import_style=commonjs,mode=grpcwebtext:./src/generated -I../proto ../proto/pubsub.proto",
+    "dev": "npx webpack serve --mode development",
+    "build": "npx webpack --mode production"
+  },
+  "dependencies": {
+    "google-protobuf": "^3.21.2",
+    "grpc-web": "^1.5.0"
+  },
+  "devDependencies": {
+    "css-loader": "^7.1.2",
+    "html-webpack-plugin": "^5.6.0",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.0.4"
+  }
+}

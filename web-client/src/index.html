@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>gRPC Stream - PubSub Client</title>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>gRPC Stream PubSub</h1>
+      <p class="subtitle">Real-time event streaming via gRPC server-side streaming</p>
+    </header>
+
+    <div class="container">
+      <div class="panel">
+        <h2>Subscribe</h2>
+        <div class="input-group">
+          <input type="text" id="subscribe-topic" placeholder="Topic name (e.g. news)" value="news" />
+          <button id="subscribe-btn">Subscribe</button>
+          <button id="unsubscribe-btn" disabled>Unsubscribe</button>
+        </div>
+        <div id="status" class="status disconnected">Disconnected</div>
+      </div>
+
+      <div class="panel">
+        <h2>Publish</h2>
+        <div class="input-group">
+          <input type="text" id="publish-topic" placeholder="Topic" value="news" />
+          <input type="text" id="publish-data" placeholder="Message data" />
+          <button id="publish-btn">Publish</button>
+        </div>
+      </div>
+
+      <div class="panel events-panel">
+        <div class="events-header">
+          <h2>Events</h2>
+          <button id="clear-btn" class="small-btn">Clear</button>
+        </div>
+        <div id="events" class="events-list"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
