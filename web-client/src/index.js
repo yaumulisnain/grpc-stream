@@ -2,7 +2,7 @@ import './styles.css';
 import { PubSubClient } from './generated/pubsub_grpc_web_pb';
 import { SubscribeRequest, PublishRequest } from './generated/pubsub_pb';
 
-const ENVOY_URL = 'http://localhost:8081';
+const ENVOY_URL = `${window.location.protocol}//${window.location.hostname}:8081`;
 const client = new PubSubClient(ENVOY_URL, null, null);
 
 let activeStream = null;

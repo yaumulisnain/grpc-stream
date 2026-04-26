@@ -101,6 +101,10 @@ npm run dev
 
 ## Kotlin Android Client
 
+For a complete buildable Kotlin sample app (with Gradle files and APK output path), see:
+
+- `android-example/README.md`
+
 ### Setup
 
 Add to your `build.gradle.kts` (app-level):
