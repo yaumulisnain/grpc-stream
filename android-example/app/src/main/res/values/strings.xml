@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">gRPC Stream Android</string>
+    <string name="settings">Settings</string>
+    <string name="grpc_server_settings">gRPC Server Settings</string>
+    <string name="grpc_host">Host</string>
+    <string name="grpc_port">Port</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="settings_saved">Settings saved</string>
+    <string name="host_required">Host is required</string>
+    <string name="invalid_port">Port must be 1-65535</string>
+    <string name="topic_hint">Topic (e.g. news)</string>
+    <string name="message_hint">Message</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="publish">Publish</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="events">Events</string>
+</resources>

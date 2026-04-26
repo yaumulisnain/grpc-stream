@@ -56,9 +56,9 @@ This starts all three services:
 
 | Service    | URL                    |
 | ---------- | ---------------------- |
-| Web Client | http://localhost:8080   |
-| Envoy      | http://localhost:8081   |
-| gRPC Server| grpc://localhost:50051  |
+| Web Client | http://127.0.0.1:8080   |
+| Envoy      | http://127.0.0.1:8081   |
+| gRPC Server| grpc://127.0.0.1:50051  |
 
 Open the web client, subscribe to a topic (e.g. `news`), then publish messages to see them appear in real time.
 
@@ -87,7 +87,7 @@ docker run --rm -p 8081:8081 \
 cd web-client
 npm install
 npm run dev
-# Open http://localhost:8080
+# Open http://127.0.0.1:8080
 ```
 
 ## How It Works
@@ -465,10 +465,10 @@ You can also test the server directly using `grpcurl`:
 
 ```bash
 # Subscribe (streams events until cancelled)
-grpcurl -plaintext -d '{"topic": "news"}' localhost:50051 pubsub.PubSub/Subscribe
+grpcurl -plaintext -d '{"topic": "news"}' 127.0.0.1:50051 pubsub.PubSub/Subscribe
 
 # Publish (in another terminal)
-grpcurl -plaintext -d '{"topic": "news", "data": "Hello World!"}' localhost:50051 pubsub.PubSub/Publish
+grpcurl -plaintext -d '{"topic": "news", "data": "Hello World!"}' 127.0.0.1:50051 pubsub.PubSub/Publish
 ```
 
 ## Project Structure
