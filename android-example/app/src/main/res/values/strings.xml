@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">gRPC Stream Android</string>
+    <string name="topic_hint">Topic (e.g. news)</string>
+    <string name="message_hint">Message</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unsubscribe">Unsubscribe</string>
+    <string name="publish">Publish</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="events">Events</string>
+</resources>
