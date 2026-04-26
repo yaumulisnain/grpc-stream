@@ -7,8 +7,8 @@ import pubsub.PubSubGrpcKt
 import pubsub.Pubsub
 
 class PubSubRepository(
-    host: String = "10.0.2.2",
-    port: Int = 8082
+    host: String = BuildConfig.GRPC_HOST,
+    port: Int = BuildConfig.GRPC_PORT
 ) {
     private val channel: ManagedChannel = ManagedChannelBuilder
         .forAddress(host, port)

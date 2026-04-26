@@ -4,6 +4,9 @@ plugins {
     id("com.google.protobuf")
 }
 
+val grpcHost = (project.findProperty("grpcHost") as String?) ?: "10.0.2.2"
+val grpcPort = ((project.findProperty("grpcPort") as String?) ?: "8082").toInt()
+
 android {
     namespace = "com.example.grpcstream"
     compileSdk = 34
@@ -14,6 +17,8 @@ android {
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
+        buildConfigField("String", "GRPC_HOST", "\"$grpcHost\"")
+        buildConfigField("int", "GRPC_PORT", grpcPort.toString())
     }
 
     buildTypes {
@@ -36,14 +41,10 @@ android {
     }
 
     buildFeatures {
+        buildConfig = true
         viewBinding = true
     }
 
-    sourceSets {
-        getByName("main") {
-            proto.srcDir("../../proto")
-        }
-    }
 }
 
 protobuf {
@@ -62,7 +63,6 @@ protobuf {
         all().forEach { task ->
             task.builtins {
                 create("java") { option("lite") }
-                create("kotlin") { option("lite") }
             }
             task.plugins {
                 create("grpc") { option("lite") }

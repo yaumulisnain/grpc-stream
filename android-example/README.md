@@ -48,7 +48,10 @@ The output APK is:
 
 ## 3) Notes
 
+- gRPC target is configurable in `gradle.properties`:
+  - `grpcHost=10.0.2.2`
+  - `grpcPort=8082`
 - Emulator uses `10.0.2.2` for host access.
-- For a real device, replace host in `PubSubRepository.kt` with your machine LAN IP.
+- For a real device, set `grpcHost` to your machine LAN IP.
 - This app uses the repository's shared proto via `app/build.gradle.kts` source set:
-  `proto.srcDir("../../proto")`.
+  copied to `app/src/main/proto/pubsub.proto`.
