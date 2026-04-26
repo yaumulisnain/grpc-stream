@@ -1,5 +1,6 @@
 package com.example.grpcstream
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -38,7 +39,16 @@ class MainActivity : AppCompatActivity() {
             binding.messageInput.setText("")
         }
 
+        binding.settingsBtn.setOnClickListener {
+            startActivity(Intent(this, SettingsActivity::class.java))
+        }
+
         observeUi()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.refreshConnectionSettings()
     }
 
     private fun observeUi() {

@@ -1,6 +1,7 @@
 package com.example.grpcstream
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collect
@@ -10,8 +11,9 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import pubsub.Pubsub
 
-class MainViewModel : ViewModel() {
-    private val repository = PubSubRepository()
+class MainViewModel(application: Application) : AndroidViewModel(application) {
+    private var config = GrpcServerSettings.load(application)
+    private var repository = PubSubRepository(config.host, config.port)
     private var streamJob: Job? = null
 
     private val _status = MutableStateFlow("Disconnected")
@@ -19,6 +21,17 @@ class MainViewModel : ViewModel() {
 
     private val _events = MutableStateFlow<List<Pubsub.Event>>(emptyList())
     val events: StateFlow<List<Pubsub.Event>> = _events.asStateFlow()
+
+    fun refreshConnectionSettings() {
+        val updated = GrpcServerSettings.load(getApplication())
+        if (updated == config) return
+
+        streamJob?.cancel()
+        repository.close()
+        config = updated
+        repository = PubSubRepository(config.host, config.port)
+        _status.value = "Server updated: ${config.host}:${config.port}"
+    }
 
     fun subscribe(topic: String) {
         if (topic.isBlank()) return

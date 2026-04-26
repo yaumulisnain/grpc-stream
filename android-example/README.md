@@ -48,6 +48,7 @@ The output APK is:
 
 ## 3) Notes
 
+- In app, open **Settings** to set gRPC server host/port.
 - gRPC target is configurable in `gradle.properties`:
   - `grpcHost=10.0.2.2`
   - `grpcPort=8082`
